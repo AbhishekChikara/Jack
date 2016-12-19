@@ -64,3 +64,17 @@ X_test = df2.iloc[:, 1:]
 
 y_prediction = model.predict(X_test)
 print(np.sum(y_prediction)/len(y_prediction))
+
+def create_submission(filename):
+
+    
+
+    submission = pd.DataFrame({
+        "PassengerId": df2["PassengerId"],
+        "Survived": y_prediction
+    })
+    
+    submission.to_csv(filename, index=False)
+
+
+create_submission("run-01.csv")
